@@ -1,0 +1,475 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,600;0,800;0,900;1,300;1,800&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --void:#070707;
+  --off:#f5f0e8;
+  --wire:#1e1e1e;
+  --ash:#2e2e2e;
+  --dust:#555;
+  --dim:#999;
+  --cut:#c0392b;
+}
+body{background:var(--void);color:var(--off);font-family:'Courier Prime',monospace;overflow-x:hidden;cursor:crosshair;}
+
+/* ── HERO ── */
+.id-block{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr auto;
+  position:relative;overflow:hidden;
+}
+.id-bg-lines{
+  position:absolute;inset:0;
+  background-image:repeating-linear-gradient(90deg,transparent,transparent 59px,var(--wire) 59px,var(--wire) 60px);
+  opacity:0.18;pointer-events:none;
+}
+/* left col */
+.id-left{
+  grid-column:1;grid-row:1;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 48px 40px;
+  position:relative;z-index:1;
+  border-right:1px solid var(--wire);
+}
+.id-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  font-size:clamp(90px,14vw,180px);
+  line-height:0.82;letter-spacing:-3px;color:var(--off);
+}
+.id-name .hollow{color:transparent;-webkit-text-stroke:1.5px var(--off);}
+.id-name .cut{color:var(--cut);}
+.id-since{
+  margin-top:32px;
+  font-size:12px;letter-spacing:2px;color:var(--dust);
+  font-style:italic;
+  display:flex;align-items:center;gap:12px;
+}
+.id-since::before{content:'—';color:var(--cut);}
+
+/* right col */
+.id-right{
+  grid-column:2;grid-row:1;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 48px 40px;
+  position:relative;z-index:1;
+  gap:32px;
+}
+.id-adjectives{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;
+  font-size:clamp(28px,4vw,48px);
+  line-height:1.15;
+  color:var(--off);
+}
+.id-adjectives .faded{color:var(--dust);font-weight:300;font-style:italic;}
+.id-adjectives .rule{display:block;width:40px;height:3px;background:var(--cut);margin:16px 0;}
+.id-adjectives .smaller{
+  font-size:clamp(20px,3vw,34px);
+  font-weight:300;font-style:italic;color:var(--dim);
+}
+
+.id-callout{
+  border:1px solid var(--wire);
+  padding:24px 28px;
+  position:relative;
+}
+.id-callout::before{
+  content:'\201C\201C';
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-size:48px;
+  color:var(--cut);line-height:1;
+  display:block;margin-bottom:8px;
+}
+.id-callout-text{
+  font-family:'Courier Prime',monospace;
+  font-size:12px;font-style:italic;
+  line-height:1.9;color:var(--dim);
+}
+.id-callout-attr{
+  margin-top:16px;font-size:10px;
+  letter-spacing:3px;text-transform:uppercase;color:var(--ash);
+}
+
+/* bottom stats — span full width */
+.id-bottom{
+  grid-column:1/-1;grid-row:2;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--wire);
+  position:relative;z-index:1;
+}
+.id-stat{padding:24px 32px;border-right:1px solid var(--wire);}
+.id-stat:last-child{border-right:none;}
+.id-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:64px;color:var(--off);line-height:1;display:block;}
+.id-num.red{color:var(--cut);}
+.id-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dust);margin-top:4px;}
+
+/* ── MANIFESTO ── */
+.manifesto{padding:80px 48px;border-top:1px solid var(--wire);border-bottom:1px solid var(--wire);background:var(--off);color:var(--void);position:relative;overflow:hidden;}
+.manifesto-watermark{position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:200px;color:rgba(0,0,0,0.04);line-height:1;pointer-events:none;white-space:nowrap;}
+.manifesto-body{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(32px,5vw,60px);line-height:1.1;max-width:80%;position:relative;z-index:1;}
+.manifesto-body .strike{position:relative;color:rgba(0,0,0,0.25);}
+.manifesto-body .strike::after{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:100%;height:3px;background:var(--void);}
+.manifesto-body .real{color:var(--void);}
+.manifesto-body .accent{color:var(--off);background:var(--void);padding:0 8px;}
+.manifesto-note{margin-top:32px;font-family:'Courier Prime',monospace;font-size:13px;font-style:italic;color:var(--dust);line-height:1.8;max-width:500px;position:relative;z-index:1;}
+
+/* ── THOUGHTS ── */
+.thoughts{background:var(--void);border-bottom:1px solid var(--wire);}
+.thoughts-header{padding:32px 48px;border-bottom:1px solid var(--wire);display:flex;justify-content:space-between;align-items:center;}
+.th-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--dust);}
+.thought-row{display:grid;grid-template-columns:80px 1fr 120px;padding:32px 48px;border-bottom:1px solid var(--wire);align-items:start;transition:background 0.2s;cursor:default;}
+.thought-row:hover{background:var(--wire);}
+.thought-row:last-child{border-bottom:none;}
+.tr-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:48px;color:var(--ash);line-height:1;}
+.tr-text{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-style:italic;font-size:22px;color:var(--dim);line-height:1.5;padding:6px 0;}
+.tr-text strong{color:var(--off);font-weight:600;font-style:normal;}
+.tr-tag{text-align:right;padding-top:10px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);}
+.tr-tag.live{color:var(--cut);}
+
+/* ── WORK ── */
+.work{background:var(--off);color:var(--void);border-bottom:1px solid #ccc;}
+.work-header{padding:32px 48px;border-bottom:1px solid #ccc;display:flex;justify-content:space-between;align-items:baseline;}
+.work-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--dust);}
+.work-count{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:48px;color:rgba(0,0,0,0.08);line-height:1;}
+.work-row{display:grid;grid-template-columns:180px 1fr 100px;gap:0;border-bottom:1px solid #ddd;position:relative;transition:background 0.2s;}
+.work-row:last-child{border-bottom:none;}
+.work-row:hover{background:rgba(0,0,0,0.02);}
+.wr-year{padding:32px 24px 32px 48px;border-right:1px solid #ddd;font-size:11px;letter-spacing:1px;color:var(--dust);display:flex;flex-direction:column;justify-content:space-between;}
+.wr-period{line-height:2;}
+.wr-badge{display:inline-block;background:var(--void);color:var(--off);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;margin-top:12px;align-self:flex-start;}
+.wr-badge.now{background:var(--cut);color:var(--off);}
+.wr-badge.ghost{background:transparent;color:#aaa;border:1px solid #ccc;}
+.wr-main{padding:32px 32px;}
+.wr-co{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:42px;letter-spacing:-1px;line-height:1;margin-bottom:8px;display:inline-block;cursor:default;}
+.wr-co.faded{color:#aaa;font-style:italic;}
+.wr-role{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dust);margin-bottom:14px;}
+.wr-desc{font-size:12px;line-height:1.8;color:var(--dust);font-style:italic;max-width:460px;}
+.wr-num{padding:32px 24px;border-left:1px solid #ddd;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:80px;color:rgba(0,0,0,0.05);line-height:1;text-align:right;}
+
+/* ── SKILLS ── */
+.skills{background:var(--void);border-bottom:1px solid var(--wire);padding:64px 48px;}
+.sk-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:48px;}
+.sk-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--dust);}
+.sk-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--wire);}
+.sk-item{background:var(--void);padding:28px 24px;}
+.sk-name{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:18px;letter-spacing:1px;color:var(--off);margin-bottom:16px;}
+.sk-bar{height:2px;background:var(--ash);margin-bottom:8px;}
+.sk-fill{height:2px;background:var(--off);width:0;transition:width 1.4s cubic-bezier(0.16,1,0.3,1);}
+.sk-item.wip .sk-fill{background:var(--cut);}
+.sk-meta{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dust);}
+.sk-item.wip .sk-meta{color:var(--cut);}
+
+/* ── CONTACT ── */
+.contact{background:var(--void);padding:0;}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;min-height:400px;}
+.ct-left{padding:64px 48px;border-right:1px solid var(--wire);display:flex;flex-direction:column;justify-content:space-between;}
+.ct-prompt{font-size:12px;letter-spacing:1px;color:var(--dust);margin-bottom:8px;font-style:italic;}
+.ct-big{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(60px,10vw,120px);line-height:0.85;color:var(--off);letter-spacing:-2px;}
+.ct-big .y{color:var(--cut);}
+.ct-links{display:flex;flex-direction:column;gap:0;}
+.ct-link{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-top:1px solid var(--wire);text-decoration:none;color:var(--dim);font-size:12px;letter-spacing:1px;transition:color 0.2s;}
+.ct-link:last-child{border-bottom:1px solid var(--wire);}
+.ct-link:hover{color:var(--cut);}
+.ct-link-type{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);}
+.ct-right{padding:64px 48px;display:flex;flex-direction:column;justify-content:center;}
+.terminal{font-family:'Courier Prime',monospace;font-size:12px;line-height:2.2;color:var(--dust);}
+.terminal .cmd{color:var(--cut);}
+.terminal .out{color:var(--dim);}
+.terminal .cursor{display:inline-block;width:8px;height:14px;background:var(--cut);vertical-align:middle;animation:blink 1s step-end infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.footer{padding:16px 48px;border-top:1px solid var(--wire);display:flex;justify-content:space-between;align-items:center;}
+.ft{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);}
+</style>
+
+<!-- HERO -->
+<div class="id-block">
+  <div class="id-bg-lines"></div>
+
+  <div class="id-left">
+    <div class="id-name">
+      <div>OM<span class="hollow">AR</span></div>
+      <div><span class="cut">SE</span>LIEM</div>
+    </div>
+    <div class="id-since">Working since age 14. Never stopped.</div>
+  </div>
+
+  <div class="id-right">
+    <div class="id-adjectives">
+      Independent.<br>
+      <span class="faded">Analytical.</span><br>
+      <span class="faded">Always one step ahead.</span>
+      <span class="rule"></span>
+      <span class="smaller">sometimes lost,<br>always moving.</span>
+    </div>
+    <div class="id-callout">
+      <div class="id-callout-text">
+        I'm an overthinker — which sounds like a flaw until you realize it means I've already considered every angle before the meeting starts.
+      </div>
+      <div class="id-callout-attr">— Omar Seliem, on working style</div>
+    </div>
+  </div>
+
+  <div class="id-bottom">
+    <div class="id-stat">
+      <span class="id-num red">14</span>
+      <div class="id-label">Age it started</div>
+    </div>
+    <div class="id-stat">
+      <span class="id-num">3+</span>
+      <div class="id-label">Years in</div>
+    </div>
+    <div class="id-stat">
+      <span class="id-num">∞</span>
+      <div class="id-label">Thoughts/sec</div>
+    </div>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="manifesto-watermark">SHAPE</div>
+  <div class="manifesto-body">
+    <span class="strike">Settled.</span><br>
+    <span class="real">Never.</span><br>
+    I can be anything<br>the room <span class="accent">needs</span>.
+  </div>
+  <p class="manifesto-note">
+    Sold glasses at 14. Knocked on ad agency doors while still in school — nobody opened.<br>
+    Got a digital marketing diploma anyway. Joined college, landed Amazon, never looked back.<br>
+    The shape keeps changing. The ambition doesn't.
+  </p>
+</div>
+
+<!-- THOUGHTS -->
+<div class="thoughts">
+  <div class="thoughts-header">
+    <span class="th-label">What runs in the background</span>
+    <span class="th-label">Always</span>
+  </div>
+  <div class="thought-row">
+    <div class="tr-num">01</div>
+    <div class="tr-text"><strong>Worked since 14.</strong> Not because someone told me to — because stillness felt like defeat.</div>
+    <div class="tr-tag live">Core</div>
+  </div>
+  <div class="thought-row">
+    <div class="tr-num">02</div>
+    <div class="tr-text">I <strong>overthink everything</strong>. Every metric, every gap, every thing no one else clocked. It's expensive and worth it.</div>
+    <div class="tr-tag">Feature</div>
+  </div>
+  <div class="thought-row">
+    <div class="tr-num">03</div>
+    <div class="tr-text">Agencies said no while I was still in school. <strong>I got the diploma anyway.</strong> Then I got Amazon.</div>
+    <div class="tr-tag">Chapter</div>
+  </div>
+  <div class="thought-row">
+    <div class="tr-num">04</div>
+    <div class="tr-text">Dark? Yes. But <strong>studio-at-2am dark</strong>. The kind that focuses, not the kind that stops.</div>
+    <div class="tr-tag">Mode</div>
+  </div>
+  <div class="thought-row">
+    <div class="tr-num">05</div>
+    <div class="tr-text">Sometimes lost. But the kind of lost where <strong>you're still moving</strong>. Direction ≠ momentum.</div>
+    <div class="tr-tag live">Now</div>
+  </div>
+</div>
+
+<!-- WORK -->
+<div class="work">
+  <div class="work-header">
+    <span class="work-title">The full timeline — nothing hidden</span>
+    <span class="work-count">04</span>
+  </div>
+
+  <div class="work-row">
+    <div class="wr-year">
+      <div class="wr-period">Oct 2024<br>Present</div>
+      <div class="wr-badge now">Current</div>
+    </div>
+    <div class="wr-main">
+      <div class="wr-co" data-text="Home Hive">Home Hive</div>
+      <div class="wr-role">Operations & Customer Experience Analyst</div>
+      <div class="wr-desc">End-to-end journey ownership. Leading a moderation team. AWB tracking, logistics coordination — resolving problems before they become complaints.</div>
+    </div>
+    <div class="wr-num">I</div>
+  </div>
+
+  <div class="work-row">
+    <div class="wr-year">
+      <div class="wr-period">Aug 2023<br>Sep 2024</div>
+      <div class="wr-badge">Flagship</div>
+    </div>
+    <div class="wr-main">
+      <div class="wr-co" data-text="Amazon">Amazon</div>
+      <div class="wr-role">Regional UX Specialist — Egypt</div>
+      <div class="wr-desc">Analyzed the Egyptian market's purchase behavior. Found friction nobody had named yet. Reduced ticket volume. Root cause investigations with CAP and Quality teams.</div>
+    </div>
+    <div class="wr-num">II</div>
+  </div>
+
+  <div class="work-row" style="background:rgba(0,0,0,0.01);">
+    <div class="wr-year">
+      <div class="wr-period">2019<br>2023</div>
+      <div class="wr-badge ghost">Unwritten</div>
+    </div>
+    <div class="wr-main">
+      <div class="wr-co faded" data-text="The Hustle Years">The Hustle Years</div>
+      <div class="wr-role">Side hustles · Agency rejections · Digital marketing diploma</div>
+      <div class="wr-desc">Knocked on every ad agency door while still in school. None opened. Got a digital marketing diploma at Udacity anyway. Tried everything. Lost sometimes. Kept going. Then college started — and Amazon called.</div>
+    </div>
+    <div class="wr-num" style="color:rgba(0,0,0,0.03);">III</div>
+  </div>
+
+  <div class="work-row">
+    <div class="wr-year">
+      <div class="wr-period">Jul 2016<br>Oct 2019</div>
+      <div class="wr-badge ghost">Origin</div>
+    </div>
+    <div class="wr-main">
+      <div class="wr-co" data-text="El-Adel Eyewear">El-Adel Eyewear</div>
+      <div class="wr-role">Sales Specialist — Age 14</div>
+      <div class="wr-desc">Where it all began. Reading people, closing deals, building loyalty. The foundation everything else was built on.</div>
+    </div>
+    <div class="wr-num">IV</div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="skills">
+  <div class="sk-header">
+    <span class="sk-label">The tools</span>
+    <span class="sk-label" style="color:var(--cut);">+ 2 more loading</span>
+  </div>
+  <div class="sk-grid">
+    <div class="sk-item">
+      <div class="sk-name">Excel & Pivots</div>
+      <div class="sk-bar"><div class="sk-fill" data-w="90"></div></div>
+      <div class="sk-meta">Advanced</div>
+    </div>
+    <div class="sk-item">
+      <div class="sk-name">KPI Tracking</div>
+      <div class="sk-bar"><div class="sk-fill" data-w="88"></div></div>
+      <div class="sk-meta">Advanced</div>
+    </div>
+    <div class="sk-item">
+      <div class="sk-name">End-to-End CX</div>
+      <div class="sk-bar"><div class="sk-fill" data-w="92"></div></div>
+      <div class="sk-meta">Expert</div>
+    </div>
+    <div class="sk-item">
+      <div class="sk-name">Root Cause Analysis</div>
+      <div class="sk-bar"><div class="sk-fill" data-w="84"></div></div>
+      <div class="sk-meta">Advanced</div>
+    </div>
+    <div class="sk-item">
+      <div class="sk-name">HubSpot CRM</div>
+      <div class="sk-bar"><div class="sk-fill" data-w="75"></div></div>
+      <div class="sk-meta">Proficient</div>
+    </div>
+    <div class="sk-item">
+      <div class="sk-name">Process Optimization</div>
+      <div class="sk-bar"><div class="sk-fill" data-w="85"></div></div>
+      <div class="sk-meta">Advanced</div>
+    </div>
+    <div class="sk-item wip">
+      <div class="sk-name">SQL</div>
+      <div class="sk-bar"><div class="sk-fill" data-w="30"></div></div>
+      <div class="sk-meta">Loading ···</div>
+    </div>
+    <div class="sk-item wip">
+      <div class="sk-name">Power BI</div>
+      <div class="sk-bar"><div class="sk-fill" data-w="25"></div></div>
+      <div class="sk-meta">Loading ···</div>
+    </div>
+    <div class="sk-item">
+      <div class="sk-name">Negotiation</div>
+      <div class="sk-bar"><div class="sk-fill" data-w="76"></div></div>
+      <div class="sk-meta">Proficient</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact">
+  <div class="contact-inner">
+    <div class="ct-left">
+      <div>
+        <div class="ct-prompt">// initiate contact</div>
+        <div class="ct-big">TALK<br>TO<br><span class="y">ME.</span></div>
+      </div>
+      <div class="ct-links">
+        <a class="ct-link" href="mailto:O.seliem@outlook.com">O.seliem@outlook.com<span class="ct-link-type">Email</span></a>
+        <a class="ct-link" href="https://linkedin.com/in/Omar-Seliem" target="_blank">linkedin / Omar-Seliem<span class="ct-link-type">LinkedIn</span></a>
+        <a class="ct-link" href="tel:+201091453443">+20 109 145 3443<span class="ct-link-type">Phone</span></a>
+      </div>
+    </div>
+    <div class="ct-right">
+      <div class="terminal">
+        <div><span class="cmd">$ whoami</span></div>
+        <div><span class="out">omar_seliem</span></div>
+        <br>
+        <div><span class="cmd">$ status</span></div>
+        <div><span class="out">building. always building.</span></div>
+        <br>
+        <div><span class="cmd">$ location</span></div>
+        <div><span class="out">cairo, egypt // 30.04°N</span></div>
+        <br>
+        <div><span class="cmd">$ education</span></div>
+        <div><span class="out">BBA · Cairo University · 2026</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <span class="ft">© 2025 Omar Seliem</span>
+  <span class="ft">Shapeshifter · Overthinker · Ambitious</span>
+  <span class="ft">All chaos reserved</span>
+</div>
+
+<script>
+// skill bar animation
+const fills = document.querySelectorAll('.sk-fill');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.style.width = e.target.getAttribute('data-w') + '%';
+      obs.unobserve(e.target);
+    }
+  });
+}, {threshold:0.1});
+fills.forEach(f => obs.observe(f));
+
+// scramble on company name hover
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#%&';
+function scramble(el, original, duration=700){
+  let start = null;
+  let raf;
+  const step = ts => {
+    if(!start) start = ts;
+    const progress = Math.min((ts - start) / duration, 1);
+    let result = '';
+    for(let i = 0; i < original.length; i++){
+      if(i < Math.floor(progress * original.length)){
+        result += original[i];
+      } else {
+        result += original[i] === ' ' ? ' ' : chars[Math.floor(Math.random() * chars.length)];
+      }
+    }
+    el.textContent = result;
+    if(progress < 1) raf = requestAnimationFrame(step);
+    else el.textContent = original;
+  };
+  cancelAnimationFrame(raf);
+  requestAnimationFrame(step);
+}
+
+document.querySelectorAll('.wr-co').forEach(el => {
+  const original = el.getAttribute('data-text') || el.textContent;
+  el.addEventListener('mouseenter', () => scramble(el, original));
+});
+</script>
